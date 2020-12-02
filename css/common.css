@@ -1,0 +1,16 @@
+html,body{
+	background-color: #fff;
+}
+.mui-bar{
+	background-color: #fff;
+}
+
+.mui-bar-tab .mui-tab-item.mui-active {
+	color: #EF6330 !important;
+}
+
+.mui-bar-tab .mui-tab-item .mui-icon~.mui-tab-label{
+	padding: 4px 0;
+	font-size:12px!important;
+	font-weight: bold;
+}
