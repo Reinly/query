@@ -1,34 +1,58 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title></title>
-		<script src="js/mui.min.js"></script>
-		<link href="css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
-		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
-		<link rel="stylesheet" type="text/css" href="css/common.css"/>
-
-	</head>
-	<body>
-		
-		
-		<nav class="mui-bar mui-bar-tab">
-			<a class="mui-tab-item mui-active">
-				<span class="mui-icon iconfont">&#xe627;</span>
-				<span class="mui-tab-label">违章查询</span>
-			</a>
-			<a class="mui-tab-item">
-				<span class="mui-icon iconfont">&#xe62f;</span>
-				<span class="mui-tab-label">我的</span>
-			</a>
-			
-		</nav>
-		<script src="./js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript" charset="utf-8">
-			mui.init();
-		</script>
-	</body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/iconfont.css">
+	<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+	
+<nav class="mui-bar mui-bar-tab" id='tabbar'>
+	<a class="mui-tab-item mui-active" href='home.html'>
+		<span class="mui-icon iconfont icon-shouye"></span>
+		<span class="mui-tab-label">违章查询</span>
+	</a>
+	<a class="mui-tab-item" href='my.html'>
+		<span class="mui-icon iconfont icon-Icon_wode"></span>
+		<span class="mui-tab-label">我的</span>
+	</a>
+</nav>
+	
+<script src="js/mui.min.js"></script>
+<script src='js/flexible.js'></script>
+<script type="text/javascript" charset="utf-8">
+	mui.init();
+	mui.plusReady(function () {
+	    //页面列表
+		var pages = [
+			'home.html',
+			'my.html'
+		];
+		//窗口进入的样式
+		var styles = {
+			top:'0px',
+			bottom:'90px'
+		};
+		//获取当前窗口
+		var wx = plus.webview.currentWebview();
+		//创建窗口过程
+		var page_length =pages.length;
+		for(var i=0;i<page_length;i++){
+			var item = plus.webview.create( pages[i],pages[i], styles);
+			item.hide();
+			wx.append(item);
+		}
+		//显示第一个窗口
+		plus.webview.show(pages[0]);
+		//点击tabbar进行页面跳转
+		mui("#tabbar").on('tap','a',function(){
+			var href = this.getAttribute('href');
+			plus.webview.show( href  );
+		})
+	})
+</script>
+</body>
 </html>
