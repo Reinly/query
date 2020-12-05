@@ -4,20 +4,39 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
-		
+
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="fonts/iconfont.css" />
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/home.css"/>
 
 	</head>
 	<body>
 
-		我是home页面
+		<header>
+			<div class="header">
+				<div class="city">
+					<span>北京</span>
+					<i class='iconfont icon-arrow-down'></i>
+				</div>
+				<h3>违章查询</h3>
+				<div class='add-cart'>
+					<i class='iconfont icon-hao'></i>
+				</div>
+			</div>
+			<div></div>
+			<div></div>
+		</header>
 		<script src="./js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
+			mui.plusReady(function(){
+				plus.navigator.setStatusBarBackground('#EF6330');	
+				plus.navigator.setStatusBarStyle('light');
+			})
 		</script>
 	</body>
 </html>

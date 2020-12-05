@@ -1,0 +1,26 @@
+header{
+	height: 8.8rem;
+	color:#fff;
+	background-color: #EF6330;
+}
+.header{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	padding:0.533333rem 0.266666rem;
+	font-size:0.373333rem;
+}
+.header h3{
+	position: absolute;
+	left:0;
+	right:0;
+	font-size:0.48rem;
+	font-weight: 500;
+	text-align: center;
+}
+.city span{
+	font-size:0.373333rem;
+}
+.add-cart i{
+	font-size:0.64rem;
+}
