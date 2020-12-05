@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
 		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
-		<link rel="stylesheet" type="text/css" href="css/home.css"/>
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
 
 	</head>
 	<body>
@@ -26,15 +26,29 @@
 					<i class='iconfont icon-hao'></i>
 				</div>
 			</div>
-			<div></div>
-			<div></div>
+			<div class="mian-day">
+				<div class="weather">
+					<div>-5~3<i>&#8451;</i></div>
+					<div>多云</div>
+					<div>宜洗车</div>
+				</div>
+				
+				<div class="limitation">
+					<div>今日限行</div>
+					<div><span>4</span>|<span>9</span></div>
+					<div>明日限行5/0</div>
+				</div>
+			</div>
+		
+
+
 		</header>
 		<script src="./js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
-			mui.plusReady(function(){
-				plus.navigator.setStatusBarBackground('#EF6330');	
+			mui.plusReady(function() {
+				plus.navigator.setStatusBarBackground('#EF6330');
 				plus.navigator.setStatusBarStyle('light');
 			})
 		</script>
