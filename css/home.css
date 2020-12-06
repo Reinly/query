@@ -1,5 +1,15 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
 header {
-	height: 8.8rem;
+	width: 100%;
+	height: 12rem;
+	padding-top: 1.2rem;
 	color: #fff;
 	background-color: #EF6330;
 }
@@ -29,29 +39,78 @@ header {
 	font-size: 0.64rem;
 }
 
-.mian-day{
+.mian-day {
 	display: flex;
 	justify-content: space-between;
 	padding: 0 0.266666rem;
 	color: #fff;
 }
-.weather div:first-child{
-	margin-top:0.266666rem;
+
+.weather div:first-child {
+	margin-top: 0.266666rem;
 }
-.weather div + div{
-	padding-top:0.16rem;
-	font-size:0.32rem;
+
+.weather div+div {
+	padding-top: 0.16rem;
+	font-size: 0.32rem;
 }
-.limitation{
+
+.limitation {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	width: 2.133333rem;
 	height: 2.666666rem;
+	font-size: 0.373333rem;
+	text-align: center;
+	border: 2px solid #fff;
+}
+
+.limitation div+div {
+	font-size: 0.32rem;
+}
+section {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.main {
+	position: absolute;
+	left: 0;
+	top: -1.6rem;
+	width: 100%;
+	height: 5.333333rem;
+	background-color: #fff;
+	border-top-left-radius: 26%;
+	border-top-right-radius: 26%;
+}
+.main-add-cart {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 5.333333rem;
+
+}
+.main-add-cart .icon-jiahao-copy {
+	font-size: 1.333333rem;
+	color: rgb(98, 173, 101);
+}
+.main ul{
+	display: flex;
+}
+.main ul li{
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.main ul li img{
+	width: 0.96rem;
+	height: 0.96rem;
+}
+.main ul li span{
+	padding: 0.266666rem 0;
 	font-size:0.373333rem;
 	text-align: center;
-	border:2px solid #fff;
-}
-.limitation div + div{
-	font-size:0.32rem;
 }
