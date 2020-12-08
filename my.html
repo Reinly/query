@@ -16,7 +16,7 @@
 
 		<div class="container">
 			<header>
-				<div class="config">
+				<div class="config" id="config">
 					<i class="iconfont icon-shezhi"></i>
 				</div>
 				<div class="portrait">
@@ -50,6 +50,15 @@
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
+			mui.plusReady(function() {
+
+				mui('header').on('tap', '#config', function() {
+					mui.openWindow({
+						url: 'config.html',
+						id: 'config'
+					})
+				})
+			})
 		</script>
 	</body>
 </html>
