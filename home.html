@@ -32,8 +32,8 @@
 
 					<div class="limitation">
 						<div>今日限行</div>
-						<div><span>4</span>|<span>9</span></div>
-						<div>明日限行5/0</div>
+						<div id="dateLimit"><span>4</span>|<span>9</span></div>
+						<div id="week"></div>
 					</div>
 				</div>
 			</header>
@@ -122,6 +122,7 @@
 
 					document.getElementById('cityName').innerHTML = data.cityname;
 					fWeather(data.cityname);
+					fGetCitylimit(data.cityname);
 
 				})
 				//天气接口
@@ -143,6 +144,43 @@
 						}
 					})
 				}
+				//获取当前日期
+				function fGetDate() {
+					var date = new Date();
+					var swperator = '-';
+					var year = date.getFullYear();
+					var month = date.getMonth() + 1;
+					var day = date.getDate();
+					if (month >= 1 && month <= 9) {
+						month = "0" + month;
+					}
+					if (day >= 1 && day <= 9) {
+						day = "0" + day;
+					}
+					var currentDate = year + swperator + month + swperator + day;
+					return currentDate
+				}
+				//限行
+				function fGetCitylimit(city) {
+
+					mui.ajax('https://api.jisuapi.com/vehiclelimit/query', {
+						dataType: 'json',
+						data: {
+							appkey: '15b163096b822dbf',
+							city: city,
+							date: fGetDate()
+						},
+						success: function(data) {
+							var result = data.result;
+							
+							var num = result.number.replace('和', ' | ');
+							//限行号码赋值
+							document.getElementById('dateLimit').innerHTML = num;
+							//星期赋值
+							document.getElementById('week').innerHTML = result.week;
+						}
+					})
+				}
 
 				mui('.header').on('tap', '#goCity', function() {
 					mui.openWindow({
@@ -155,6 +193,7 @@
 					var cityTitle = e.detail.cityTitle;
 					document.getElementById('cityName').innerHTML = cityTitle;
 					fWeather(cityTitle);
+					fGetCitylimit(cityTitle);
 				});
 
 
