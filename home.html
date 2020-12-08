@@ -83,7 +83,11 @@
 						id: 'cityList'
 					})
 				})
-
+				//接受city数据
+				window.addEventListener('cityName',function(e){
+						var cityTitle = e.detail.cityTitle;
+						alert( cityTitle );
+					});
 
 
 			})
