@@ -14,8 +14,8 @@
 		<div class="container">
 			<header>
 				<div class="header">
-					<div class="city">
-						<span id='goCity'>北京</span>
+					<div class="city" id="goCity">
+						<span id='cityName'>北京</span>
 						<i class='iconfont icon-arrow-down'></i>
 					</div>
 					<h3>违章查询</h3>
@@ -64,11 +64,9 @@
 			</section>
 		</div>
 
-
-
-
 		<script src="./js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/home.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			// mui(".header").on("tap", "#goCity", function() {
 			// 	mui.openWindown({
@@ -77,6 +75,57 @@
 			// 	})
 			mui.init();
 			mui.plusReady(function() {
+		
+				//home js start 		
+				var home = {};
+				var maps = null;
+
+				home.init = function(successCb){
+					fGetCityLimit(successCb)
+				}		
+				//监听位置
+				plus.geolocation.watchPosition(function(data){
+					//获取到当前所在位置的市
+					maps = data.address.city.replace('市','');
+				},function(){
+					mui.toast('定位获取失败,请检查网络');
+				});
+						
+				//位置对比
+				function fGetFilterCity(arr){
+					for(var i in arr){
+						if( arr[i].cityname == maps  ){
+							return arr[i];
+						}
+					}
+					return arr[0];
+				}
+	
+				//请求限行城市数据
+				function fGetCityLimit(successCb){
+					mui.ajax('https://api.jisuapi.com/vehiclelimit/city',{
+						dataType:'json',
+						data:{
+							appkey:'15b163096b822dbf'
+						},
+						success:function(data){
+							var result = data.result;
+							var targetCity = fGetFilterCity(result)
+							successCb(targetCity);
+						}
+					})
+				}
+				//home js end
+				
+				
+				home.init(function(data) {
+
+					//执行赋值的操作
+					document.getElementById('cityName').innerHTML = data.cityname;
+
+				})
+
+
 				mui('.header').on('tap', '#goCity', function() {
 					mui.openWindow({
 						url: 'city.html',
@@ -84,10 +133,10 @@
 					})
 				})
 				//接受city数据
-				window.addEventListener('cityName',function(e){
-						var cityTitle = e.detail.cityTitle;
-						alert( cityTitle );
-					});
+				window.addEventListener('cityName', function(e) {
+					var cityTitle = e.detail.cityTitle;
+					alert(cityTitle);
+				});
 
 
 			})
