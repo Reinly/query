@@ -55,7 +55,7 @@
 							<img src="img/xj.png" alt="">
 							<span>新车询价</span>
 						</li>
-						<li>
+						<li id="station">
 							<img src="img/jy.png" alt="">
 							<span>加油站</span>
 						</li>
@@ -109,8 +109,14 @@
 							id:'high'
 						})
 					})
+				//加油站页面跳转
 					
-					
+					mui('.main').on('tap','#station',function(){
+						mui.openWindow({
+							url:'station.html',
+							id:'station'
+						})
+					})
 					
 				//请求限行城市数据
 				function fGetCityLimit(successCb) {
