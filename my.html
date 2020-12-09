@@ -147,15 +147,16 @@
 						id: 'config'
 					})
 				})	
-				mui('section').on('tap','#drivingLicense',function(){
-						if(  localStorage.getItem('drivingLicense')  ){
-							//跳转到列表页
-							// mui.openWindow({
-							// 	url:'config.html',
-							// 	id:'config'
-							// })
+				mui('section').on('tap','#driverLicense',function(){
+				
+						if(  localStorage.getItem('driverLicense')  ){
+							
+							mui.openWindow({
+								url:'config.html',
+								id:'config'
+							})
 						}else{
-							//跳转到添加页面
+							
 							mui.openWindow({
 								url:'addDrivinglicense.html',
 								id:'addDrivinglicense'
