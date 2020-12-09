@@ -43,9 +43,9 @@
 						<i class='iconfont icon-jiahao-copy'></i>
 					</div>
 					<ul>
-						<li>
+						<li id="high">
 							<img src="img/wz.png" alt="">
-							<span>违章高发地</span>
+							<span >违章高发地</span>
 						</li>
 						<li>
 							<img src="img/lk.png" alt="">
@@ -66,7 +66,7 @@
 
 		<script src="./js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/home.js" type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript" charset="utf-8">
 			// mui(".header").on("tap", "#goCity", function() {
 			// 	mui.openWindown({
@@ -100,7 +100,18 @@
 					}
 					return arr[0];
 				}
-
+				//违章高发地
+				
+				//点击违章高发地跳转页面
+					mui('.main').on('tap','#high',function(){
+						mui.openWindow({
+							url:'high.html',
+							id:'high'
+						})
+					})
+					
+					
+					
 				//请求限行城市数据
 				function fGetCityLimit(successCb) {
 					mui.ajax('https://api.jisuapi.com/vehiclelimit/city', {
