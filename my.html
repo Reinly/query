@@ -34,11 +34,11 @@
 			<section>
 				<h4>个人服务</h4>
 				<ul>
-					<li>
+					<li id="vehicle">
 						<i class="iconfont icon-cheliang"></i>
 						<span>我的车辆</span>
 					</li>
-					<li id="driverLicense">
+					<li id="drivinglicense">
 						<i class="iconfont  icon-jiazhao"></i>
 						<span>我的驾照</span>
 					</li>
@@ -70,39 +70,39 @@
 
 		<script src="./js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
-		
+
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 			mui.plusReady(function() {
-				
-				
-			//login js start
-			
-			var oauth = {};
-			var oauthList = null;
-			
-			plus.oauth.getServices( function(data){
-				oauthList = data;
-			}, function(){
-				mui.toast('获取列表失败');
-			});
-			
-			//获取的列表和当前点击的做对比
-			oauth.fFilterOauth = function( id ){
-				for( var i in oauthList){
-					if( oauthList[i].id == id ){
-						return oauthList[i]
+
+
+				//login js start
+
+				var oauth = {};
+				var oauthList = null;
+
+				plus.oauth.getServices(function(data) {
+					oauthList = data;
+				}, function() {
+					mui.toast('获取列表失败');
+				});
+
+				//获取的列表和当前点击的做对比
+				oauth.fFilterOauth = function(id) {
+					for (var i in oauthList) {
+						if (oauthList[i].id == id) {
+							return oauthList[i]
+						}
 					}
+					return null;
 				}
-				return null;
-			}
-			
-			
-			//login js end	
-			
+
+
+				//login js end	
+
 				//一进入页面，读取本地存储的用户信息
 				var getUserInfo = JSON.parse(localStorage.getItem('userInfo'));
-				
+
 				if (getUserInfo) {
 					document.getElementById('userName').innerHTML = getUserInfo.nickname;
 					document.getElementById('userImg').src = getUserInfo.headimgurl || getUserInfo.profile_image_url;
@@ -110,7 +110,7 @@
 				} else {
 					document.getElementById('popoverLogin').href = '#login';
 				}
-				
+
 				//登录操作
 				mui('#login').on('tap', '.oauth', function() {
 					//获取id
@@ -146,24 +146,44 @@
 						url: 'config.html',
 						id: 'config'
 					})
-				})	
-				mui('section').on('tap','#driverLicense',function(){
-				
-						if(  localStorage.getItem('driverLicense')  ){
-							
+				})
+				mui('section').on('tap','#vehicle',function(){
+						if(!localStorage.getItem('userInfo')){
+							mui.toast('请先登录');
+							return false;
+						}
+						
+						if(  localStorage.getItem('vehicle')  ){
 							mui.openWindow({
-								url:'config.html',
-								id:'config'
+								url:'listVehicle.html',
+								id:'listVehicle'
 							})
 						}else{
-							
 							mui.openWindow({
-								url:'addDrivinglicense.html',
-								id:'addDrivinglicense'
+								url:'addVehicle.html',
+								id:'addVehicle'
 							})
 						}
-					})
 						
+					})
+				mui('section').on('tap', '#drivinglicense', function() {
+
+					if (localStorage.getItem('drivinglicense')) {
+						//跳转到列表页
+						mui.openWindow({
+							url: 'listDrivinglicense.html',
+							id: 'listDrivinglicense'
+						})
+					} else {
+						//跳转到添加页面
+						mui.openWindow({
+							url: 'addDrivinglicense.html',
+							id: 'addDrivinglicense'
+						})
+					}
+
+				})
+
 			})
 		</script>
 	</body>

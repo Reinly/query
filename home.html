@@ -116,6 +116,13 @@
 						id: 'station'
 					})
 				})
+				
+				mui('.header').on('tap', '.add-cart', function() {
+					mui.openWindow({
+						url: 'addVehicle.html',
+						id: 'addVehicle'
+					})
+				})
 
 				//实时路况
 				mui('.main').on('tap', '#Realtime', function() {
@@ -210,6 +217,12 @@
 					mui.openWindow({
 						url: 'city.html',
 						id: 'cityList'
+					})
+				})
+				mui('.main').on('tap', '.main-add-cart', function() {
+					mui.openWindow({
+						url: 'addDrivinglicense.html',
+						id: 'addDrivinglicense'
 					})
 				})
 				//接受city数据
