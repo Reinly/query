@@ -45,9 +45,9 @@
 					<ul>
 						<li id="high">
 							<img src="img/wz.png" alt="">
-							<span >违章高发地</span>
+							<span>违章高发地</span>
 						</li>
-						<li>
+						<li id="Realtime">
 							<img src="img/lk.png" alt="">
 							<span>实时路况</span>
 						</li>
@@ -66,7 +66,7 @@
 
 		<script src="./js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
-		
+
 		<script type="text/javascript" charset="utf-8">
 			// mui(".header").on("tap", "#goCity", function() {
 			// 	mui.openWindown({
@@ -101,23 +101,30 @@
 					return arr[0];
 				}
 				//违章高发地
-				
-				//点击违章高发地跳转页面
-					mui('.main').on('tap','#high',function(){
-						mui.openWindow({
-							url:'high.html',
-							id:'high'
-						})
+
+				mui('.main').on('tap', '#high', function() {
+					mui.openWindow({
+						url: 'high.html',
+						id: 'high'
 					})
+				})
 				//加油站页面跳转
-					
-					mui('.main').on('tap','#station',function(){
-						mui.openWindow({
-							url:'station.html',
-							id:'station'
-						})
+
+				mui('.main').on('tap', '#station', function() {
+					mui.openWindow({
+						url: 'station.html',
+						id: 'station'
 					})
-					
+				})
+
+				//实时路况
+				mui('.main').on('tap', '#Realtime', function() {
+					mui.openWindow({
+						url: 'Realtime.html',
+						id: 'Realtime'
+					})
+				})
+
 				//请求限行城市数据
 				function fGetCityLimit(successCb) {
 					mui.ajax('https://api.jisuapi.com/vehiclelimit/city', {
@@ -189,7 +196,7 @@
 						},
 						success: function(data) {
 							var result = data.result;
-							
+
 							var num = result.number.replace('和', ' | ');
 							//限行号码赋值
 							document.getElementById('dateLimit').innerHTML = num;
