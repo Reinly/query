@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover" />
+		<title>我的驾驶证</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/addDrivinglicense.css" />
+	</head>
+	<body>
+
+		<div class='container'>
+			<div class='header'>
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<h1 class="mui-title">添加驾驶证</h1>
+				</header>
+			</div>
+			<section>
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label>驾驶证号</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入完整的驾驶证号">
+					</div>
+					<div class="mui-input-row">
+						<label>档案编号</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入完整的档案编号">
+					</div>
+					<div class="mui-input-row">
+						<label>证件姓名</label>
+						<input type="text" class="mui-input-clear" placeholder="请输入正确的姓名">
+					</div>
+				</form>
+				<div class='search'>
+					<button type="button" class="mui-btn mui-btn-warning" id='startSearch'>开始查询</button>
+					<p>
+						您所填写的信息仅仅用于驾照证查询，我们将严格遵守《个人信息保密声明》，请放心填写。
+					</p>
+				</div>
+			</section>
+		</div>
+
+		<script src="js/mui.js"></script>
+		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+
+
+			})
+		</script>
+	</body>
+
+</html>
