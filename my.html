@@ -99,8 +99,10 @@
 			
 			
 			//login js end	
+			
 				//一进入页面，读取本地存储的用户信息
 				var getUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+				
 				if (getUserInfo) {
 					document.getElementById('userName').innerHTML = getUserInfo.nickname;
 					document.getElementById('userImg').src = getUserInfo.headimgurl || getUserInfo.profile_image_url;
@@ -108,7 +110,7 @@
 				} else {
 					document.getElementById('popoverLogin').href = '#login';
 				}
-
+				
 				//登录操作
 				mui('#login').on('tap', '.oauth', function() {
 					//获取id

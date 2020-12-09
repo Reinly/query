@@ -1,3 +1,8 @@
+mui.init()
+mui.plusReady(function () {
+
+
+
 var oauth = {};
 var oauthList = null;
 
@@ -16,3 +21,5 @@ oauth.fFilterOauth = function( id ){
 	}
 	return null;
 }
+
+})

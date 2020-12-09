@@ -10,7 +10,7 @@
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="css/reset.css" />
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
-		<link rel="stylesheet" type="text/css" href="css/config.css"/>
+		<link rel="stylesheet" type="text/css" href="css/config.css" />
 
 	</head>
 
@@ -21,39 +21,56 @@
 					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 					<h1 class="mui-title">设置</h1>
 				</header>
-				
+
 			</div>
 			<section>
-					<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									用户服务协议
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									隐私政策
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									分享给朋友
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									检查更新
-								</a>
-							</li>
-						</ul>
-						<button class='out'>退出登录</button>
-				</section>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							用户服务协议
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							隐私政策
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							分享给朋友
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							检查更新
+						</a>
+					</li>
+				</ul>
+				<button class='out' id="out">退出登录</button>
+			</section>
 		</div>
 
 		<script src="js/mui.js"></script>
 		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			mui.init()
+			mui.plusReady(function() {
+				//如果没有登录 隐藏按钮
+				if(  !localStorage.getItem('userInfo')  ){
+						document.getElementById('out').style.display = 'none';
+						return false;
+					}
+	
+				
+				mui('section').on('tap', '#out', function() {
+					mui.confirm('确定退出登录？', '提示', ['确定', '取消'], function(e) {
+					            if(e.index == 0) {
+					                localStorage.clear();
+					                plus.runtime.restart();
+					            }
+					        }, 'div')
+				})
+			})
 		</script>
 	</body>
 
